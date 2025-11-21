@@ -43,8 +43,8 @@ def load_dataset(dir_path):
     return data_mat, np.array(label_list, dtype=np.int32)
 
 # ========== 3. 指定你的训练集 / 测试集目录 ==========
-train_dir = r"C:\Users\菜月昴\Desktop\svm\dataset\trainingDigits"   # 改成你的 402 个训练文件所在文件夹
-test_dir  = r"C:\Users\菜月昴\Desktop\svm\dataset\testDigits"       # 改成你的 186 个测试文件所在文件夹
+train_dir = r"C:\dataset\trainingDigits"   # 改成你的 402 个训练文件所在文件夹
+test_dir  = r"C:\dataset\testDigits"       # 改成你的 186 个测试文件所在文件夹
 
 X_train, y_train = load_dataset(train_dir)
 X_test,  y_test  = load_dataset(test_dir)
@@ -74,7 +74,7 @@ grid_search = GridSearchCV(
     param_grid=param_grid,
     scoring="accuracy",
     cv=5,          # 5折交叉验证
-    n_jobs=-1,     # 并行计算加速
+    n_jobs=1,      # 改为1，避免多进程导致的编码问题
     verbose=1      # 输出详细日志
 )
 
